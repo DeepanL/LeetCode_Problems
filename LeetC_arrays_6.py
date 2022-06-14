@@ -23,3 +23,38 @@ Input: nums = [1,3,2]
 Output: false
 
 '''
+
+class Solution:
+    def isMonotonic(self, nums: list[int]) -> bool:
+        flag_increasing = True
+        flag_decreasing = True
+
+        for i in range(len(nums)-1):
+            if nums[i] < nums[i+1]:
+                # flag_increasing = True
+                flag_decreasing = False
+                # print(flag_increasing, flag_decreasing)
+            if nums[i] > nums[i+1]:
+                # flag_increasing = False
+                flag_increasing = False
+                # print(flag_increasing, flag_decreasing)
+        # print(flag_increasing, flag_decreasing)
+        if flag_increasing == True and flag_decreasing == False:
+            return True
+        elif flag_increasing == False and flag_decreasing == True:
+            return True
+        elif flag_increasing == True and flag_decreasing == True:
+            return True
+        else:
+            return False
+
+# print(Solution().isMonotonic([1,2,2,3]))
+# print(Solution().isMonotonic([6,5,4,4]))
+# print(Solution().isMonotonic([1,3,2]))
+# print(Solution().isMonotonic([1,1,1]))
+print(Solution().isMonotonic([1,2,4,5]))
+
+
+
+
+
