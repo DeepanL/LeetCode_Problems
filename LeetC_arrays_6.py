@@ -47,12 +47,33 @@ class Solution:
             return True
         else:
             return False
+    def isMonotonic2(self, nums: list[int]) -> bool:
+        n = len(nums)
+        if n <= 2:
+            return True
+        d = nums[0] - nums[n-1]
 
-# print(Solution().isMonotonic([1,2,2,3]))
-# print(Solution().isMonotonic([6,5,4,4]))
-# print(Solution().isMonotonic([1,3,2]))
-# print(Solution().isMonotonic([1,1,1]))
-print(Solution().isMonotonic([1,2,4,5]))
+        if d > 0:
+            for i in range(n-1):
+                if nums[i] < nums[i+1]:
+                    return False
+        elif d < 0:
+            for i in range(n-1):
+                if nums[i] > nums[i+1]:
+                    return False
+        else:
+            for i in range(n-1):
+                if nums[i] != nums[i+1]:
+                    return False
+
+        return True
+
+
+print(Solution().isMonotonic([1,2,2,3]))
+print(Solution().isMonotonic([6,5,4,4]))
+print(Solution().isMonotonic([1,3,2]))
+print(Solution().isMonotonic([1,1,1]))
+print(Solution().isMonotonic2([1,2,4,5]))
 
 
 
