@@ -32,6 +32,9 @@ Constraints:
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
+        if needle == '':
+            return 0
+        
         if len(needle) > len(haystack):
             return -1
         for i in range(len(haystack)):
@@ -54,10 +57,24 @@ class Solution:
                 else:
                     continue
         return -1
+    def strStr2(self, haystack: str, needle: str) -> int:
+        if needle == '':
+            return 0
+        
+        if len(needle) > len(haystack):
+            return -1
+        for i in range(len(haystack)):
+            if haystack[i] == needle[0]:
+                check_str = haystack[i:i+len(needle)]
+                if check_str == needle:
+                    return i
+                # print(check_str)
+        return -1
 
-# print(Solution().strStr("hello", "ll"))
-# print(Solution().strStr("aaaaa", "bba"))
-print(Solution().strStr("mississippi", "issipi"))
+
+print(Solution().strStr2("hello", "ll"))
+print(Solution().strStr("aaaaa", ""))
+print(Solution().strStr2("mississippi", "issipi"))
 
 
 
